@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タカの渡り予報 宗谷岬</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        // 日付を取得し、指定した日数を加える関数
+        function getFutureDate(days) {
+            const today = new Date();
+            today.setDate(today.getDate() + days);  // 日付に指定した日数を加える
+            const year = today.getFullYear();
+            const month = ('0' + (today.getMonth() + 1)).slice(-2);  // 月は0始まり
+            const day = ('0' + today.getDate()).slice(-2);
+            const dayOfWeekNames = ['日', '月', '火', '水', '木', '金', '土'];
+            const dayOfWeek = dayOfWeekNames[today.getDay()];  // 曜日名を取得
+
+            // 日付 + 曜日を "YYYY/MM/DD (曜日)" 形式で返す
+            return `${year}/${month}/${day} (${dayOfWeek})`;  
+        }
+
+        function displayData() {
+            for (let i = 0; i < 5; i++) {
+                const dateElement = document.getElementById(`date${i}`);
+
+                if (dateElement) {
+                dateElement.textContent = getFutureDate(i);  // +i日後の日付と曜日を表示
+                }
+            }
+        }
+
+        // ページ読み込み後にデータを表示
+        window.onload = displayData;
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>宗谷岬 タカの渡り予報 秋Ver.</h1>
+    </header>
+
+    <main>
+        <section>
+            <p>3日間の気圧配置パターンと季節から、一日の渡り数を予測するモデルです。毎日12UTCを初期値とし、5日先までの予測渡り数を表示します。</p>
+            <p>※あくまでも予報です。外れる可能性も十分あります。</p>
+            <p>
+                2024秋 宗谷岬タカの渡り速報ページは
+                <a href="https://hawknet.sunnyday.jp/cgi-bin/hmnj_navi_sokuho_new_v2.cgi?oyear=24&season=fall#top1-4">
+                    こちら
+                </a>
+            </p>
+        </section>
+
+        <section>
+            <h2>最新の予報データ:</h2>
+            <p>毎日AM9:00の天気図を表示</p>
+
+            <!-- 5日分のデータを表示 -->
+            <div id="forecast">
+                <div class="grid-container">
+                    <div class="grid-item flex-container">
+                        <div id="date0" class="date"></div>
+                        <img src="image\Pressure_Wind_FD0012.png" alt="天気図1">
+                        <br>
+                        <img src="image\histogram_1.png" alt="確率分布1">
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item flex-container">
+                        <div id="date1" class="date"></div>
+                        <img src="image\Pressure_Wind_FD0112.png" alt="天気図2">
+                        <br>
+                        <img src="image\histogram_2.png" alt="確率分布2">
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item flex-container">
+                        <div id="date2" class="date"></div>
+                        <img src="image\Pressure_Wind_FD0212.png" alt="天気図3">
+                        <br>
+                        <img src="image\histogram_3.png" alt="確率分布3">
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item flex-container">
+                        <div id="date3" class="date"></div>
+                        <img src="image\Pressure_Wind_FD0312.png" alt="天気図4">
+                        <br>
+                        <img src="image\histogram_4.png" alt="確率分布4">
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item flex-container">
+                        <div id="date4" class="date"></div>
+                        <img src="image\Pressure_Wind_FD0412.png" alt="天気図5">
+                        <br>
+                        <img src="image\histogram_5.png" alt="確率分布5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>目安　✕：～２０　△２０～１５０　〇１５０～１０００　◎１０００～　　羽の渡りが期待できるでしょう</h3>
+            <br>
+            <h4>各クラスの確率 (eの指数でクラス分け)</h4>
+
+            <p>　指数：対応する数(羽)</p>
+
+            <ol>
+                <li>0~2：0~7</li>
+                <li>2~3：8~20</li>
+                <li>3~4：21~54</li>
+                <li>4~5：55~148</li>
+                <li>5~6：149~403</li>
+                <li>6~7：404~1096</li>
+                <li>7~8：1097~2980</li>
+                <li>8~9：2981~8103</li>
+            </ol>
+        </section>
+
+        <section>
+            <figure>
+                <img src="fig_som_com_rev-7(2).png" 
+                     alt="自己組織化マップ(SOM)による気圧配置パターン分類" 
+                     width="500" height="500">
+                <figcaption>自己組織化マップ(SOM)による気圧配置パターン分類</figcaption>
+            </figure>
+        </section>
+    </main>
+</body>
+</html>
