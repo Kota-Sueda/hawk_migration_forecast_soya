@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+
+h1 {
+    color: #333;
+}
+
+/* forecast全体のスタイル */
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 横に5つの列を作成 */
+    gap: 30px;  /* 各アイテム間の隙間 */
+    margin: 5px;
+}
+
+/* 各 grid-item のスタイル */
+.grid-item {
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+}
+
+/* 画像のスタイル */
+.grid-item img {
+    width: 100%;  /* 画像をコンテナ内で100%の幅に調整 */
+    height: auto;  /* アスペクト比を維持 */
+    max-width: 300px;  /* 画像の最大幅を制限 */
+}
+
+/* 日付のスタイル */
+.date {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* キャプションのスタイル */
+.caption {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+
+.grid-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.caption {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+figure img {
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+
+@media (max-width: 600px) {
+    .grid-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
