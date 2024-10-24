@@ -55,13 +55,13 @@ print(predictions)
 
 # === クラスに応じたシンボルを取得する関数 ===
 def get_symbol(class_num):
-    if class_num in [1, 2]:
+    if class_num in [0, 1]:
         return '✕'
-    elif class_num in [3, 4]:
+    elif class_num in [2, 3]:
         return '△'
-    elif class_num in [5, 6]:
+    elif class_num in [4, 5]:
         return '〇'
-    elif class_num in [7, 8]:
+    elif class_num in [6, 7]:
         return '◎'
     else:
         return ''  # 該当しない場合は空文字
