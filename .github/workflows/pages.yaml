@@ -15,5 +15,5 @@ jobs:
       - name: GitHub Pages にデプロイ
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ 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 }}
           publish_dir: .  # ルートディレクトリをデプロイ
