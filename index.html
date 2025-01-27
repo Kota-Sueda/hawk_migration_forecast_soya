@@ -6,34 +6,7 @@
     <title>タカの渡り予報 宗谷岬</title>
     <link rel="stylesheet" href="styles.css">
 
-    <script>
-        // 日付を取得し、指定した日数を加える関数
-        function getFutureDate(days) {
-            const today = new Date();
-            today.setDate(today.getDate() + days);  // 日付に指定した日数を加える
-            const year = today.getFullYear();
-            const month = ('0' + (today.getMonth() + 1)).slice(-2);  // 月は0始まり
-            const day = ('0' + today.getDate()).slice(-2);
-            const dayOfWeekNames = ['日', '月', '火', '水', '木', '金', '土'];
-            const dayOfWeek = dayOfWeekNames[today.getDay()];  // 曜日名を取得
-
-            // 日付 + 曜日を "YYYY/MM/DD (曜日)" 形式で返す
-            return `${year}/${month}/${day} (${dayOfWeek})`;  
-        }
-
-        function displayData() {
-            for (let i = 0; i < 5; i++) {
-                const dateElement = document.getElementById(`date${i}`);
-
-                if (dateElement) {
-                dateElement.textContent = getFutureDate(i);  // +i日後の日付と曜日を表示
-                }
-            }
-        }
-
-        // ページ読み込み後にデータを表示
-        window.onload = displayData;
-    </script>
+    
 </head>
 
 <body>
